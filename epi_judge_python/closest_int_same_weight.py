@@ -1,8 +1,19 @@
 from test_framework import generic_test
 
 
+def swap_bits(x, i, j):
+
+    if ( (x >>i)&1) != ( (x>>j) &1 ):
+        return (x^ (2**i))^ (2**j)
+    else:
+        return x
+
+
 def closest_int_same_bit_count(x: int) -> int:
-    # TODO - you fill in here.
+    for i in range(0,63):
+        if ( (x >>i & 1) != ( (x>>(i+1)) &1)):
+            return swap_bits(x, i, i+1)
+    return print("Error: invalid input")
     return 0
 
 

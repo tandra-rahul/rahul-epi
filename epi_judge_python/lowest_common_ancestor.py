@@ -11,7 +11,26 @@ from test_framework.test_utils import enable_executor_hook
 def lca(tree: BinaryTreeNode, node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
     # TODO - you fill in here.
-    return None
+    lca, num_nodes = lca_helper(tree, node0, node1)
+    return lca
+
+def lca_helper(root, node0, node1):
+
+    if not root:
+        return None, 0
+
+    l1, n1 = lca_helper(root.left, node0, node1)
+    if n1 == 2:
+        return l1, 2
+
+    l2, n2 = lca_helper(root.right, node0, node1)
+    if n2 ==2:
+        return l2, 2
+
+    num_nodes = n1 + n2 + (node0, node1).count(root)
+
+    return root if num_nodes == 2 else None, num_nodes
+
 
 
 @enable_executor_hook

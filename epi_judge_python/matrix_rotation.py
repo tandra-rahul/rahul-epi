@@ -1,10 +1,25 @@
 from typing import List
-
+import copy
 from test_framework import generic_test
 
 
 def rotate_matrix(square_matrix: List[List[int]]) -> None:
     # TODO - you fill in here.
+
+    n = len(square_matrix)
+    if n ==1:
+        return
+    B= copy.deepcopy(square_matrix)
+
+    for i in range(0, n):
+        for j in range(0, n):
+            B[j][n-i-1]  = square_matrix[i][j]
+
+
+    for i in range(0, n):
+        for j in range(0, n):
+            square_matrix[i][j] = B[i][j]
+
     return
 
 

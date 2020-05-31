@@ -5,10 +5,16 @@ from test_framework.test_failure import PropertyName
 
 Rect = collections.namedtuple('Rect', ('x', 'y', 'width', 'height'))
 
+def is_lin_intersect(s1, e1, s2, e2):
+    # Check whether two line segments intersect or not
+    return ((e2 - s1) >=0) and ((e1 - s2) >=0)
 
 def intersect_rectangle(r1: Rect, r2: Rect) -> Rect:
     # TODO - you fill in here.
-    return Rect(0, 0, 0, 0)
+    if not (is_lin_intersect(r1.x, r1.x + r1.width, r2.x, r2.x  + r2.width) and is_lin_intersect(r1.y, r1.y + r1.height, r2.y, r2.y + r2.height)):
+        return Rect(0, 0, -1, -1)
+
+    return Rect(max(r1.x, r2.x), max(r1.y, r2.y), min(r1.x + r1.width,  r2.x + r2.width) - max(r1.x, r2.x), min(r1.y + r1.height, r2.y + r2.height) - max(r1.y, r2.y))
 
 
 def intersect_rectangle_wrapper(r1, r2):

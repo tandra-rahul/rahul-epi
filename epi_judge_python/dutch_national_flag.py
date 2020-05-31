@@ -7,9 +7,34 @@ from test_framework.test_utils import enable_executor_hook
 
 RED, WHITE, BLUE = range(3)
 
+def swap(A, i, j):
+    temp = A[i]
+    A[i] = A[j]
+    A[j] = temp
 
 def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
     # TODO - you fill in here.
+    if len(A) == 1:
+        return
+
+    swap(A, 0, pivot_index)
+
+    pend = 1
+    i = 1
+    for j in range(1, len(A)):
+        if A[j] < A[0]:
+            swap(A, i, j)
+            i += 1
+
+        if A[j] == A[0]:
+            swap(A, i, j)
+            swap(A, pend, i)
+            pend += 1
+            i +=1
+
+    for k in range(0, pend):
+        swap(A, k, i-1-k)
+
     return
 
 

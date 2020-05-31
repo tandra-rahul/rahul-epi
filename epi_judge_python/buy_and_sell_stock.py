@@ -5,7 +5,17 @@ from test_framework import generic_test
 
 def buy_and_sell_stock_once(prices: List[float]) -> float:
     # TODO - you fill in here.
-    return 0.0
+    if len(prices) <= 1:
+        return 0.0
+
+    profit = 0.0
+    cumsum = 0.0
+
+    for i in range(1, len(prices)):
+        cumsum = max(0, cumsum + prices[i] - prices[i-1])
+        profit = max(profit, cumsum)
+
+    return profit
 
 
 if __name__ == '__main__':
