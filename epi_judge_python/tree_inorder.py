@@ -16,13 +16,15 @@ def inorder_traversal(tree: BinaryTreeNode) -> List[int]:
 
     while l:
         node, left_tree_done = l.pop()
-        if node:
-            if left_tree_done:
-                out.append(node.data)
-            else:
+        if left_tree_done:
+            out.append(node.data)
+        else:
+            if node.right:
                 l.append((node.right, False))
-                l.append((node,True))
+            l.append((node, True))
+            if node.left:
                 l.append((node.left, False))
+
     return out
 
 if __name__ == '__main__':
