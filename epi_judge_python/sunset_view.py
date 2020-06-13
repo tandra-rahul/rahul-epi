@@ -1,11 +1,18 @@
 from typing import Iterator, List
-
+import collections
 from test_framework import generic_test
 
+Buildings = collections.namedtuple('Building', ('id', 'height'))
 
 def examine_buildings_with_sunset(sequence: Iterator[int]) -> List[int]:
     # TODO - you fill in here.
-    return []
+    result: List[Buildings] = []
+    for ind, building_height in enumerate(sequence):
+        while result and result[-1].height <= building_height:
+            result.pop()
+        result.append(Buildings(ind, building_height))
+
+    return [c.id for c in reversed(result)]
 
 
 def examine_buildings_with_sunset_wrapper(sequence):
