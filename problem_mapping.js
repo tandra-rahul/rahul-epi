@@ -1676,7 +1676,7 @@ problem_mapping = {
                 "total": 308
             },
             "Python: smallest_nonconstructible_value.py": {
-                "passed": 0,
+                "passed": 308,
                 "total": 308
             }
         },
@@ -1746,7 +1746,7 @@ problem_mapping = {
                 "total": 105
             },
             "Python: is_array_dominated.py": {
-                "passed": 0,
+                "passed": 105,
                 "total": 105
             }
         },
@@ -1774,7 +1774,7 @@ problem_mapping = {
                 "total": 1005
             },
             "Python: find_salary_threshold.py": {
-                "passed": 0,
+                "passed": 1005,
                 "total": 1005
             }
         }
