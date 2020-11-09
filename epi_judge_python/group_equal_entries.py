@@ -1,6 +1,7 @@
 import collections
 import functools
 from typing import List
+import copy
 
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
@@ -11,6 +12,19 @@ Person = collections.namedtuple('Person', ('age', 'name'))
 
 def group_by_age(people: List[Person]) -> None:
     # TODO - you fill in here.
+    student_dict = {}
+    for student in people:
+        if student.age in student_dict:
+            student_dict[student.age].append(student)
+        else:
+            student_dict[student.age] = [student]
+
+    print(student_dict)
+    result = []
+    for key in student_dict:
+        result += student_dict[key]
+
+    people = copy.copy(result)
     return
 
 

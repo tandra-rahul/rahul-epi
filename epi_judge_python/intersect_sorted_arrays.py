@@ -15,16 +15,10 @@ def intersect_two_sorted_arrays(A: List[int], B: List[int]) -> List[int]:
         elif A[l] > B[r]:
             r +=1
         else:
-            x =A[l]
-            result.append(x)
-            while l < len(A) :
-                if A[l] != x:
-                    break
-                l += 1
-            while r < len(B):
-                if B[r] != x:
-                    break
-                r += 1
+            if l ==0 or A[l-1] != A[l]:
+                result.append(A[l])
+            l +=1
+            r +=1
 
     return result
     return []
