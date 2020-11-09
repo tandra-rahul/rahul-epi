@@ -6,14 +6,13 @@ from test_framework import generic_test
 def smallest_nonconstructible_value(A: List[int]) -> int:
     # TODO - you fill in here.
     A.sort()
-    max_val = 0
+    max_constructable_value = 0
     for i in range(len(A)):
-        if A[i] > max_val + 1:
+        if A[i] > max_constructable_value + 1:
             break
         else:
-            max_val += A[i]
-
-    return max_val+1
+            max_constructable_value += A[i]
+    return max_constructable_value +1
 
 
 if __name__ == '__main__':

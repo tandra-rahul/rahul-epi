@@ -8,7 +8,7 @@ def search_first_of_k(A: List[int], k: int) -> int:
     lo, hi, result = 0, len(A)-1, -1
 
     while lo <= hi:
-        mid = (lo +hi) //2
+        mid = (lo +hi)//2
         if A[mid] < k:
             lo = mid +1
         elif A[mid] > k:
